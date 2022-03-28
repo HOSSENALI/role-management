@@ -1,0 +1,9 @@
+.login-area{
+    padding: 3rem;
+    margin: 3rem;
+}
+.errorMessage{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
