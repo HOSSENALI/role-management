@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert'
 import "./login.css";
 import checkLogin from '../../services/auth/LoginService';
+import { withRouter } from "react-router-dom";
 
 class Login extends Component {
 
@@ -14,6 +15,14 @@ class Login extends Component {
         password: "",
         errorMassage: ""
     };
+    componentDidMount() {
+        const userData = JSON.parse(localStorage.getItem("userData")) || undefined;
+        if(typeof userData != "undefined"){
+            if (userData.username && userData.username.length > 0) {
+                this.props.history.push("/users");
+            }
+        }
+    }
 
     changeUsername = (e) => {
         const username = e.target.value;
@@ -29,8 +38,13 @@ class Login extends Component {
     }
     submitLogin = () => {
         if (checkLogin(this.state)) {
-            this.errorMassage = "";
-            alert("You are successfully logged in !!");
+            this.setState({
+                errorMassage: ""
+            });
+            //alert("You are successfully logged in !!");
+            localStorage.setItem("userData", JSON.stringify(this.state));
+            this.props.history.push("/users");
+
         } else {
             this.setState({
                 errorMassage: "Sorry!! Invalid username or password"
@@ -90,4 +104,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);
