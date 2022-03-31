@@ -4,8 +4,10 @@ import "./assets/css/global.css";
 import Login from "./components/auth/Login";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import User from "./views/users/User";
 import Header from "./components/partials/Header";
+import UserContainer from "./views/users/UserContainer";
+import RoleContainer from "./views/roles/RoleContainer";
+import PermissionContainer from "./views/permissions/PermissionContainer";
 
 function App() {
   return (
@@ -16,11 +18,14 @@ function App() {
 
           <Switch>
             <Route path="/users">
-              <User />
+              <UserContainer />
             </Route>
-            {/* <Route path="/dashboard">
-              <Users />
-            </Route> */}
+            <Route path="/roles">
+              <RoleContainer />
+            </Route>
+            <Route path="/permissions">
+              <PermissionContainer />
+            </Route>
             <Route path="/">
               <Login />
             </Route>
