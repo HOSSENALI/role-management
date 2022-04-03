@@ -27,12 +27,8 @@ const RoleList = () => {
                             <td>{index + 1}</td>
                             <td>{item.name}</td>
                             <td>
-                                {item.permissions.map((permission, index2) => (
-                                    <span className="badge badge-default" key={index2}>
-                                        {" "}
-                                        {permission.name}{" "}
-                                    </span>
-                                ))}
+                                {/* another way of printing loop */}
+                                {Array.prototype.map.call(item.permissions, item => item.name).join(", ")} 
                             </td>
                             <td>
                                 <button className="btn btn-success mr-2">Edit</button>
