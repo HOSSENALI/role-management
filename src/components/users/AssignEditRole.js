@@ -9,30 +9,31 @@ import getRoleMasterData from '../../services/roles/roleMasterData';
 import getUserHasNoRoleData from '../../services/users/userHasNoRoleData';
 
 
-const AssignRole = (props) => {
+const AssignRoleEdit = (props) => {
     const [users, setUsers] = useState([]);
     const [roles, setRoles] = useState([]);
-    const [user, setUser] = useState("");
+    // const [user, setUser] = useState("");
     const [role, setRole] = useState("");
-  
-    const changeUser = (e) => {
-        setUser(e.target.value);
-    }
+
+    // const changeUser = (e) => {
+    //     setUser(e.target.value);
+    // }
+    const { editData } = props;
     const changeRole = (e) => {
         setRole(e.target.value);
     }
-    const submitRole = () => {
-        if (user === "" || role === "") {
+    const submitRoleEdit = () => {
+        if (role === "") {
             alert("Please select all value");
             return false;
         }
-        const userData = JSON.parse(user);
+
         const roleData = JSON.parse(role);
         const data = {
-            id: userData.id,
-            username: userData.username,
-            name: userData.name,
-            password: userData.password,
+            id: editData.id,
+            username: editData.username,
+            name: editData.name,
+            password: editData.password,
             role: {
                 id:roleData.id,
                 name:roleData.name
@@ -44,23 +45,24 @@ const AssignRole = (props) => {
     }
 
     useEffect(() => {
-        setUsers(getUserData);
+       
         setRoles(getRoleMasterData);
+        setRole(JSON.stringify(editData.role));
 
-    }, [setUsers])
+    }, [])
     return (
 
         <>
             <Modal.Header closeButton>
-                <Modal.Title>Assign Role</Modal.Title>
+                <Modal.Title>Edit Assign Role</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form >
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                         <Form.Label column sm="4">
-                            Select User
+                            User
                         </Form.Label>
-                        <Col sm="6" >
+                        {/* <Col sm="6" >
                             <select className='form-control' style={{ appearance: "revert" }} onChange={changeUser} required>
                                 <option>Please select a users</option>
                                 {users.map((item, index) => (
@@ -70,7 +72,8 @@ const AssignRole = (props) => {
                                 ))}
 
                             </select>
-                        </Col>
+                        </Col> */}
+                        {props.editData.username}
                     </Form.Group>
 
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
@@ -78,7 +81,7 @@ const AssignRole = (props) => {
                             Select Role
                         </Form.Label>
                         <Col sm="6">
-                            <select className='form-control' style={{ appearance: "revert" }} onChange={changeRole} required>
+                            <select className='form-control' value={role} style={{ appearance: "revert" }} onChange={changeRole} required>
                                 <option>Please select a role</option>
                                 {roles.map((item, index) => (
                                     <option value={JSON.stringify(item)} key={item.id}>{item.name}</option>
@@ -93,7 +96,7 @@ const AssignRole = (props) => {
                 <button className='btn btn-danger' onClick={props.closeModal}>
                     Close
                 </button>
-                <button className='btn btn-success' onClick={submitRole}>
+                <button className='btn btn-success' onClick={submitRoleEdit}>
                     Save
                 </button>
             </Modal.Footer>
@@ -101,4 +104,4 @@ const AssignRole = (props) => {
     );
 };
 
-export default AssignRole;
+export default AssignRoleEdit;

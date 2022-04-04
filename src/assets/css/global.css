@@ -15,7 +15,10 @@
 .navbar a:hover {
   text-decoration: none;
 }
-
+.noData{
+  color: red;
+  text-align: center;
+}
 
 /** Sidebar **/
 
