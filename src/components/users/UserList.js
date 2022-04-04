@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ToastContainer, toast } from 'react-toastify';
 import getUserData from '../../services/users/userData';
 import Modal from 'react-bootstrap/Modal';
 import AssignRole from './AssignRole';
@@ -27,6 +28,7 @@ const UserList = () => {
         setEditData(item);
         handleShowEditModal();
 
+
     }
 
     const deleteUser = (index) => {
@@ -34,6 +36,11 @@ const UserList = () => {
         userData.splice(index, 1);
         // const userData = users.filter((item) => item.id !== id);
         setUsers(userData);
+        toast.success("You have successfully deleted a role",
+        {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2000 //2second
+        });
 
     }
 
@@ -47,6 +54,12 @@ const UserList = () => {
         }
         setUsers(userData);
         setShowModal(false);
+        toast.success("You have successfully assigned a role",
+            {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 2000 //2second
+            });
+
 
     }
     const onSubmitAssignRoleEdit = (data) => {
@@ -59,13 +72,18 @@ const UserList = () => {
         }
         setUsers(userData);
         setShowEditModal(false);
+        toast.success("You have successfully edited a role",
+            {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 2000 //2second
+            });
 
     }
 
     return (
 
         <>
-
+            <ToastContainer />
             <div>
                 <div style={{ float: "left" }}>
                     <h2>User Lists</h2>

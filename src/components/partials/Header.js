@@ -5,6 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 
 const Header = props => {
   const [isLogged, setIsLogged] = useState(false);
+  const [userData, setUserData] = useState("");
   const logout = () => {
     localStorage.removeItem("userData");
     setIsLogged(false);
@@ -13,6 +14,7 @@ const Header = props => {
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("userData")) || undefined;
+    setUserData(userData);
     if (typeof userData != "undefined") {
       if (userData.username && userData.username.length > 0) {
         setIsLogged(true);
@@ -20,7 +22,7 @@ const Header = props => {
         setIsLogged(false);
       }
     }
-  });
+  },[setUserData]);
 
   return (
     <Navbar bg="light" expand="lg">
@@ -38,7 +40,7 @@ const Header = props => {
             {isLogged && (
               <>
                 <Nav.Link>
-                  <Link to="/users">Users</Link>
+                  <Link to="/users"><span className="text-info">Welcome {userData.username}</span></Link>
                 </Nav.Link>
                 <Nav.Link onClick={logout}>Logout</Nav.Link>
               </>

@@ -19,7 +19,7 @@ class Login extends Component {
         const userData = JSON.parse(localStorage.getItem("userData")) || undefined;
         if(typeof userData != "undefined"){
             if (userData.username && userData.username.length > 0) {
-                this.props.history.push("/users");
+                window.location.href="/users";
             }
         }
     }
@@ -43,7 +43,7 @@ class Login extends Component {
             });
             //alert("You are successfully logged in !!");
             localStorage.setItem("userData", JSON.stringify(this.state));
-            this.props.history.push("/users");
+            window.location.href="/users";
 
         } else {
             this.setState({
