@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import getRolePermissionsData from "../../views/roles/rolePermissionsData";
+import getRolePermissionsData from "../../services/roles/rolePermissionsData";
 import Modal from "react-bootstrap/Modal";
 import AddRole from "./AddRole";
 import EditRole from "./EditRole";
