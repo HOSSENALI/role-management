@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import { Link, withRouter } from "react-router-dom";
 
 const Header = props => {
+  console.log("HI HOSSEN",props);
   const [isLogged, setIsLogged] = useState(false);
   const [userData, setUserData] = useState("");
   const logout = () => {

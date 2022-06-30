@@ -13,7 +13,8 @@ export default function checkLogin(state) {
     data: {}
   };
   const userData = getUserData();
-
+  
+  // console.log(userData);
   userData.forEach(user => {
     if (user.username === state.username && user.password === state.password) {
       data.isLoggedIn = true;

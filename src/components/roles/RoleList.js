@@ -87,10 +87,10 @@ const RoleList = () => {
                             <td>{item.name}</td>
                             <td>
                                 {item.permissions.map((permission, index2) => (
-                                    <span key={index2}>
-                                        {" "}
-                                        {permission.name}{" "}
-                                    </span>
+                                    <span>
+                                      <div className="first"> {permission.name}</div>  
+                                      <div className="second"> {index2 < item.permissions.length-1 && "," }</div>
+                                   </span>
                                 ))}
                             </td>
                             <td>

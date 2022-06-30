@@ -8,11 +8,11 @@ const ProductContainer = () => {
     const userDataNew =
       JSON.parse(localStorage.getItem("userData")) || undefined;
     setUserData(userDataNew.permissions);
-    console.log("userDataNew", userDataNew);
-    console.log("userData", userData);
+    // console.log("userDataNew", userDataNew);
+    // console.log("userData", userData);
   }, []);
 
-  console.log("userData", userData);
+  // console.log("userData", userData);
 
   return (
     <div className="dashboard">
