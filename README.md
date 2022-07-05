@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-[AOE - Card Game](https://role-management.netlify.app/users)
+[Role Management](https://role-management.netlify.app/users)
 
 # About Project
 
