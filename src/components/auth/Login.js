@@ -92,7 +92,9 @@ class Login extends Component {
                 >
                   Login
                 </Button>
+
               </div>
+              <span> For testing purpose,Username:<b>Hossen</b> and Password: <b>123456</b></span>
             </Form>
           </Card.Body>
         </Card>
